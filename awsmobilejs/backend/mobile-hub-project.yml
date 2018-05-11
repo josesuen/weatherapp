@@ -1,0 +1,58 @@
+--- !com.amazonaws.mobilehub.v0.Project 
+features:
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              email: S
+              personName: S
+              phone: S
+            hashKeyName: teamId
+            hashKeyType: S
+            rangeKeyName: personId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
+            tablePrivacy: public
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: teamId
+                hashKeyType: S
+                rangeKeyName: personName
+                rangeKeyType: S
+                indexName: personName-index
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              NoteTitle: S
+              NoteContent: S
+            hashKeyName: NoteId
+            hashKeyType: S
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-Notes
+            tablePrivacy: public
+            indexes: []
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      NotesCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: NotesCRUD
+          requires-signin: false
+        paths:
+          /Notes: !com.amazonaws.mobilehub.v0.Function 
+            name: Notes
+            codeFilename: uploads/Notes-20180511104343.zip
+            handler: lambda.handler
+            enableCORS: true
+            runtime: nodejs6.10
+            environment: {}
+          '/Notes/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            name: Notes
+            codeFilename: uploads/Notes-20180511104343.zip
+            handler: lambda.handler
+            enableCORS: true
+            runtime: nodejs6.10
+            environment: {}
+name: weatherApp
+region: us-west-1
