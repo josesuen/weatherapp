@@ -1,4 +1,13 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import React from 'react';
+import { AppRegistry, Text, View } from 'react-native';
+import Main from './src/components/Main';
+
+const App = () => {
+  return (
+    <View>
+      <Main />
+    </View>
+  );
+}
 
 AppRegistry.registerComponent('weatherApp', () => App);
