@@ -7,11 +7,7 @@ import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
 const App = () => {
-  return (
-    <View>
-      <Main />
-    </View>
-  );
+  return <Main />;
 }
 
 AppRegistry.registerComponent('weatherApp', () => App);

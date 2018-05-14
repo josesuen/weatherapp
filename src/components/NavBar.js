@@ -1,17 +1,31 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableNativeFeedback } from 'react-native';
 
-const NavBar = (props) => {
+class NavBar extends Component {
+  selectTab(tab){
+    console.log('a')
+     this.props.onSelectTab(tab)
+  }
 
-  return (
-    <View style={styles.navStyle}>
-      {props.items.map((item, i) => (
-        <View key={item} style={{...styles.tabStyle}}>
-          <Text style={styles.tabTextStyle}>{item}</Text>
-        </View>
-      ))}
-    </View>
-  );
+  render() {
+    const props = this.props
+
+    return (
+      <View style={styles.navStyle}>
+        {props.items.map((item, i) => (
+          <TouchableNativeFeedback
+            key={item}
+            onPress={() => this.selectTab(i)}
+          >
+            <View
+            style={i==props.selectedTab?{...styles.tabStyle,...styles.selectedTabStyle}:styles.tabStyle}>
+              <Text style={styles.tabTextStyle}>{item}</Text>
+            </View>
+          </TouchableNativeFeedback>
+        ))}
+      </View>
+    );
+  }
 }
 
 const styles = {
