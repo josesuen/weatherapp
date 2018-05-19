@@ -1,4 +1,6 @@
 --- !com.amazonaws.mobilehub.v0.Project 
+apps:
+  react-native: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
@@ -6,53 +8,23 @@ features:
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              email: S
-              personName: S
-              phone: S
-            hashKeyName: teamId
+              estacaoId: S
+              payload: M
+              timestamp: S
+            hashKeyName: timestamp
             hashKeyType: S
-            rangeKeyName: personId
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
-            tablePrivacy: public
             indexes:
               - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: teamId
+                hashKeyName: estacaoId
                 hashKeyType: S
-                rangeKeyName: personName
-                rangeKeyType: S
-                indexName: personName-index
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
-              NoteTitle: S
-              NoteContent: S
-            hashKeyName: NoteId
-            hashKeyType: S
+                indexName: estacaoId
+                rangeKeyName: ''
+                rangeKeyType: ''
             rangeKeyName: ''
             rangeKeyType: ''
-            tableName: ___DYNAMIC_PREFIX___-Notes
+            tableName: ___DYNAMIC_PREFIX___-estacoes
             tablePrivacy: public
-            indexes: []
-  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
-    components:
-      NotesCRUD: !com.amazonaws.mobilehub.v0.API 
-        attributes:
-          name: NotesCRUD
-          requires-signin: false
-        paths:
-          /Notes: !com.amazonaws.mobilehub.v0.Function 
-            name: Notes
-            codeFilename: uploads/Notes-20180511104343.zip
-            handler: lambda.handler
-            enableCORS: true
-            runtime: nodejs6.10
-            environment: {}
-          '/Notes/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            name: Notes
-            codeFilename: uploads/Notes-20180511104343.zip
-            handler: lambda.handler
-            enableCORS: true
-            runtime: nodejs6.10
-            environment: {}
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint {}
+  sign-in: !com.amazonaws.mobilehub.v0.SignIn {}
 name: weatherApp
 region: us-west-1
