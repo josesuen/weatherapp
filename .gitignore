@@ -63,3 +63,16 @@ aws-exports.*
 awsmobilejs/.awsmobile/backend-build
 awsmobilejs/\#current-backend-info
 ~awsmobilejs-*/
+RaspberryPI/\.aws/
+
+*.crt
+
+*.key
+
+RaspberryPI/rootkey\.csv
+
+RaspberryPI/ssh
+
+RaspberryPI/wpa_supplicant\.conf
+
+RaspberryPI/VeriSign-Class 3-Public-Primary-Certification-Authority-G5\.pem\.txt
