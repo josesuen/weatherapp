@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableNativeFeedback } from 'react-native';
+import { View, Text, TouchableNativeFeedback, Image } from 'react-native';
+
+const logos = {
+  home: require(`../img/home.png`),
+  history: require(`../img/clock.png`),
+  about: require(`../img/help.png`)
+}
 
 class NavBar extends Component {
   selectTab(tab){
-    console.log('a')
      this.props.onSelectTab(tab)
   }
 
@@ -13,16 +18,20 @@ class NavBar extends Component {
     return (
       <View style={styles.navStyle}>
         {props.items.map((item, i) => (
-          <TouchableNativeFeedback
-            key={item}
-            onPress={() => this.selectTab(i)}
-          >
-            <View
-            style={i==props.selectedTab?{...styles.tabStyle,...styles.selectedTabStyle}:styles.tabStyle}>
-              <Text style={styles.tabTextStyle}>{item}</Text>
-            </View>
-          </TouchableNativeFeedback>
-        ))}
+            <TouchableNativeFeedback
+              key={item}
+              onPress={() => this.selectTab(i)}
+            >
+              <View
+              style={i==props.selectedTab?{...styles.tabStyle,...styles.selectedTabStyle}:styles.tabStyle}>
+                <Image
+                  style={styles.navIconStyle}
+                  source={logos[item]}
+                />
+              </View>
+            </TouchableNativeFeedback>
+          )
+        )}
       </View>
     );
   }
@@ -35,6 +44,7 @@ const styles = {
   tabStyle: {
     alignItems: 'center',
     padding: 15,
+    paddingTop: 20,
     flexBasis: 0,
     flexGrow: 1,
     backgroundColor: '#17B'
@@ -42,8 +52,8 @@ const styles = {
   selectedTabStyle: {
     borderBottomWidth: 5
   },
-  tabTextStyle: {
-    fontSize: 20
+  navIconStyle: {
+    height: 24
   }
 }
 

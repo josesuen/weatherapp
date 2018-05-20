@@ -2,6 +2,40 @@
 apps:
   react-native: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      estacoesCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: estacoesCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /estacoes: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/estacoes-20180519230939.zip
+            description: 'Handler for calls to resource path : /estacoes/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: GE3H2Md6qu8wz7b0ts46iiv9i/xMpZKJYIQzewys6oo=
+            memorySize: '128'
+            modified: '2018-05-20T02:10:54.102+0000'
+            name: estacoes
+            runtime: nodejs6.10
+            timeout: '3'
+            version: XnW3SdpJGkefPg81qF95vEmUoyH4K95V
+          '/estacoes/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/estacoes-20180519230939.zip
+            description: 'Handler for calls to resource path : /estacoes/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: GE3H2Md6qu8wz7b0ts46iiv9i/xMpZKJYIQzewys6oo=
+            memorySize: '128'
+            modified: '2018-05-20T02:10:54.102+0000'
+            name: estacoes
+            runtime: nodejs6.10
+            timeout: '3'
+            version: dX3ykYD_jAduv7.cJa00ANd1AGOdIBUJ
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
       database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
@@ -9,22 +43,16 @@ features:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
               estacaoId: S
-              payload: M
               timestamp: S
-            hashKeyName: timestamp
+            hashKeyName: estacaoId
             hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: estacaoId
-                hashKeyType: S
-                indexName: estacaoId
-                rangeKeyName: ''
-                rangeKeyType: ''
-            rangeKeyName: ''
-            rangeKeyType: ''
+            rangeKeyName: timestamp
+            rangeKeyType: S
             tableName: ___DYNAMIC_PREFIX___-estacoes
             tablePrivacy: public
-  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint {}
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
+    components:
+      analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
   sign-in: !com.amazonaws.mobilehub.v0.SignIn {}
 name: weatherApp
-region: us-west-1
+region: us-west-2

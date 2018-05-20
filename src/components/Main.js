@@ -1,42 +1,43 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { API } from 'aws-amplify';
 import NavBar from './NavBar';
-import Amplify, { API } from 'aws-amplify';
+import Home from './Home';
+import History from './History';
 
 class Main extends Component {
   state = {
-    selectedTab: 0
+    selectedTab: 0,
+    apiResponse : {}
+  }
+
+  async componentDidMount() {
+    const path = "/estacoes/1";
+    try {
+      const apiResponse = await API.get("estacoesCRUD", path);
+      this.setState({apiResponse});
+    } catch (e) {
+      this.setState({ 'error' : e });
+    }
   }
 
   handleTab(tab) {
-      this.setState({selectedTab: tab})
+    this.setState({selectedTab: tab})
   }
 
   renderTabs() {
     switch (this.state.selectedTab) {
       case 0:
-        return (
-          <View style={styles.homeStyle}>
-            <Text style={styles.homeTextStyle}>
-              Home
-            </Text>
-          </View>
-        );
+        return <Home lastInfo={this.state.apiResponse[this.state.apiResponse.length-1]}/>;
         break;
       case 1:
-        return (
-          <View style={styles.homeStyle}>
-            <Text style={styles.homeTextStyle}>
-              Historico
-            </Text>
-          </View>
-        );
+          return <History allInfo={this.state.apiResponse}/>;
         break;
       default:
         return (
           <View style={styles.homeStyle}>
             <Text style={styles.homeTextStyle}>
-              {`Feito por:\nJosé Suen\nThomas Herbst`}
+              {`Criado por:\nJosé Suen\nThomas Herbst`}
             </Text>
           </View>
         );

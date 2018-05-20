@@ -1,0 +1,8 @@
+{
+    "estacaoId" : "1",
+    "timestamp" : "0",
+    "payload" : {
+      "temperature" : 20,
+      "humidity" : 50
+    }
+}
