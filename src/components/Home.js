@@ -8,11 +8,7 @@ const Home = (props) => {
   return (
     <View style={styles.homeStyle}>
       <Text style={styles.homeTextStyle}>
-        {
-          lastInfo ?
-            `Temperatura: ${lastInfo.temperatura}ºC\n\nUmidade: ${lastInfo.umidade}%`:
-            'Carregando'
-        }
+        {`Temperatura: ${lastInfo.temperatura}ºC\n\nUmidade: ${lastInfo.umidade}%`}
       </Text>
     </View>
   )

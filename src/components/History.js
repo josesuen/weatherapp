@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
+import Moment from 'moment';
 
 const History = (props) => {
   return (
     <View style={styles.homeStyle}>
       <FlatList
         data={props.allInfo}
+        keyExtractor={item => `${item.payload.estacaoId}_${item.payload.timestamp}`}
         renderItem={({item}) => (
-          <View>
-            <Text>Estacao: {JSON.stringify(item.payload.estacaoId)}</Text>
-            <Text>Horario: {JSON.stringify(item.payload.timestamp)}</Text>
-            <Text>Temp: {JSON.stringify(item.payload.temperatura)}</Text>
+          <View style={styles.itemStyle}>
+            <Text>Estacao: {item.payload.estacaoId}</Text>
+            <Text>Horario: {Moment(item.payload.timestamp, 'X').format('YYYY/MM/DD HH:mm')}</Text>
+            <Text>Temp: {item.payload.temperatura}</Text>
           </View>
         )}
       />
@@ -21,12 +23,10 @@ const History = (props) => {
 const styles = {
   homeStyle: {
     flex : 1,
-    alignItems: 'center',
-    justifyContent: 'center'
   },
-  homeTextStyle : {
-    textAlign: 'center',
-    fontSize : 20
+  itemStyle: {
+    padding: 16,
+    borderBottomWidth: 1
   }
 }
 

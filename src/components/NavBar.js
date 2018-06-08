@@ -4,7 +4,8 @@ import { View, Text, TouchableNativeFeedback, Image } from 'react-native';
 const logos = {
   home: require(`../img/home.png`),
   history: require(`../img/clock.png`),
-  about: require(`../img/help.png`)
+  about: require(`../img/help.png`),
+  camera: require(`../img/camera.png`)
 }
 
 class NavBar extends Component {
@@ -23,7 +24,13 @@ class NavBar extends Component {
               onPress={() => this.selectTab(i)}
             >
               <View
-              style={i==props.selectedTab?{...styles.tabStyle,...styles.selectedTabStyle}:styles.tabStyle}>
+              style=
+                {
+                  i==props.selectedTab ?
+                  {...styles.tabStyle, ...styles.selectedTabStyle} :
+                  styles.tabStyle
+                }
+              >
                 <Image
                   style={styles.navIconStyle}
                   source={logos[item]}
