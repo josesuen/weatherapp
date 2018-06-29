@@ -1,0 +1,149 @@
+{
+	"projectPath": "/home/thomas/Documents/weatherApp",
+	"backupAWSMobileJSDirPath": "/home/thomas/Documents/weatherApp/~awsmobilejs-2018-06-27-15-20-38",
+	"projectInfo": {
+		"ProjectName": "weatherApp",
+		"ProjectPath": "/home/thomas/Documents/weatherApp",
+		"InitializationTime": "",
+		"LastConfigurationTime": "",
+		"LastNPMInstallTime": "",
+		"FrontendLastBuildTime": "",
+		"LastPublishTime": "",
+		"BackendLastSyncTime": "",
+		"BackendLastBuildTime": "",
+		"BackendLastPushTime": "",
+		"BackendProjectID": "",
+		"BackendProjectName": "",
+		"BackendProjectConsoleUrl": "",
+		"BackendProjectCreationTime": "",
+		"BackendProjectLastUpdatedTime": "",
+		"Framework": "react-native"
+	},
+	"projectConfig": {
+		"SourceDir": "/",
+		"DistributionDir": "build",
+		"BuildCommand": "npm run-script build",
+		"StartCommand": "npm run-script start"
+	},
+	"backendProject": {
+		"apps": {
+			"react-native": {
+				"backend-class": "AppDO"
+			}
+		},
+		"features": {
+			"cloudlogic": {
+				"components": {
+					"estacoesCRUD": {
+						"attributes": {
+							"name": "estacoesCRUD",
+							"requires-signin": false,
+							"sdk-generation-stage-name": "Development"
+						},
+						"paths": {
+							"/estacoes": {
+								"codeFilename": "uploads/estacoes-20180519230939.zip",
+								"description": "Handler for calls to resource path : /estacoes/{proxy+}",
+								"enableCORS": true,
+								"environment": {},
+								"handler": "lambda.handler",
+								"hashcode": "GE3H2Md6qu8wz7b0ts46iiv9i/xMpZKJYIQzewys6oo=",
+								"memorySize": "128",
+								"modified": "2018-05-20T02:10:54.102+0000",
+								"name": "estacoes",
+								"runtime": "nodejs6.10",
+								"timeout": "3",
+								"version": "XnW3SdpJGkefPg81qF95vEmUoyH4K95V",
+								"backend-class": "Function"
+							},
+							"/estacoes/{proxy+}": {
+								"codeFilename": "uploads/estacoes-20180519230939.zip",
+								"description": "Handler for calls to resource path : /estacoes/{proxy+}",
+								"enableCORS": true,
+								"environment": {},
+								"handler": "lambda.handler",
+								"hashcode": "GE3H2Md6qu8wz7b0ts46iiv9i/xMpZKJYIQzewys6oo=",
+								"memorySize": "128",
+								"modified": "2018-05-20T02:10:54.102+0000",
+								"name": "estacoes",
+								"runtime": "nodejs6.10",
+								"timeout": "3",
+								"version": "dX3ykYD_jAduv7.cJa00ANd1AGOdIBUJ",
+								"backend-class": "Function"
+							}
+						},
+						"backend-class": "API"
+					}
+				},
+				"backend-class": "CloudLogic"
+			},
+			"database": {
+				"components": {
+					"database-nosql": {
+						"tables": [
+							{
+								"attributes": {
+									"estacaoId": "S",
+									"timestamp": "S"
+								},
+								"hashKeyName": "estacaoId",
+								"hashKeyType": "S",
+								"rangeKeyName": "timestamp",
+								"rangeKeyType": "S",
+								"tableName": "___DYNAMIC_PREFIX___-estacoes",
+								"tablePrivacy": "public",
+								"backend-class": "NoSQLTable"
+							}
+						],
+						"backend-class": "NoSQLDatabase"
+					}
+				},
+				"backend-class": "Database"
+			},
+			"mobile-analytics": {
+				"components": {
+					"analytics": {
+						"backend-class": "PinpointAnalytics"
+					}
+				},
+				"backend-class": "Pinpoint"
+			},
+			"sign-in": {
+				"backend-class": "SignIn"
+			}
+		},
+		"name": "weatherApp",
+		"region": "us-west-2",
+		"backend-class": "Project"
+	},
+	"packageJson": {
+		"name": "weatherApp",
+		"version": "0.0.1",
+		"private": true,
+		"scripts": {
+			"start": "node node_modules/react-native/local-cli/cli.js start",
+			"test": "jest"
+		},
+		"dependencies": {
+			"aws-amplify": "^0.3.4",
+			"aws-amplify-react-native": "^0.2.11",
+			"moment": "^2.22.2",
+			"react": "16.3.1",
+			"react-moment": "^0.7.0",
+			"react-native": "^0.55.4",
+			"react-native-maps": "^0.21.0"
+		},
+		"devDependencies": {
+			"babel-jest": "22.4.3",
+			"babel-preset-react-native": "4.0.0",
+			"jest": "22.4.3",
+			"react-test-renderer": "16.3.1"
+		},
+		"jest": {
+			"preset": "react-native"
+		}
+	},
+	"framework": "react-native",
+	"initialStage": "backend-valid",
+	"strategy": "import"
+}
